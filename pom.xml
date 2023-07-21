@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jenkins-ci.plugins</groupId>
+        <artifactId>plugin</artifactId>
+        <version>4.65</version>
+        <relativePath/>
+    </parent>
+    <groupId>io.jenkins.blueocean.plugins</groupId>
+    <artifactId>blueocean-designflow-ui</artifactId>
+    <version>1.1-SNAPSHOT</version>
+    <packaging>hpi</packaging>
+
+    <properties>
+        <!-- Baseline Jenkins version you use to build the plugin. Users must have this version or newer to run. -->
+        <jenkins.version>2.387.3</jenkins.version>
+
+        <!-- Node and NPM versions. -->
+        <node.version>10.24.1</node.version>
+        <npm.version>6.14.12</npm.version>
+
+        <!-- Java Level to use. Java 7 required when using core >= 1.612 -->
+        <!-- Jenkins Test Harness version you use to test the plugin. -->
+        <!-- For Jenkins version >= 1.580.1 use JTH 2.x or higher. -->
+        <!-- Other properties you may want to use:
+             ~ hpi-plugin.version: The HPI Maven Plugin version used by the plugin..
+             ~ stapler-plugin.version: The Stapler Maven plugin version required by the plugin.
+        -->
+
+        <!-- stop initialize phase plugins executing twice -->
+        <javadoc.exec.goal>javadoc-no-fork</javadoc.exec.goal>
+    </properties>
+
+    <name>Blueocean Designflow Plugin</name>
+    <description>display some extra ui for Designflow task</description>
+
+    <!-- The default licence for Jenkins OSS Plugins is MIT. Substitute for the applicable one if needed. -->
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <!-- If you want this to appear on the wiki page:
+    <developers>
+      <developer>
+        <id>bhacker</id>
+        <name>Bob Q. Hacker</name>
+        <email>bhacker@nowhere.net</email>
+      </developer>
+    </developers>
+    -->
+    <!-- Assuming you want to host on @jenkinsci:
+    <scm>
+      <connection>scm:git:git://github.com/jenkinsci/${project.artifactId}-plugin.git</connection>
+      <developerConnection>scm:git:git@github.com:jenkinsci/${project.artifactId}-plugin.git</developerConnection>
+      <url>http://github.com/jenkinsci/${project.artifactId}-plugin</url>
+    </scm>
+     -->
+    <repositories>
+        <repository>
+            <id>repo.jenkins-ci.org</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>repo.jenkins-ci.org</id>
+            <url>https://repo.jenkins-ci.org/public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <!-- Pick up common dependencies for the selected LTS line: https://github.com/jenkinsci/bom#usage -->
+                <groupId>io.jenkins.tools.bom</groupId>
+                <artifactId>bom-2.387.x</artifactId>
+                <version>2133.v2e6c00fe4d61</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>io.jenkins.blueocean</groupId>
+            <artifactId>blueocean</artifactId>
+            <version>1.27.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jenkins-ci.plugins.workflow</groupId>
+            <artifactId>workflow-aggregator</artifactId>
+            <version>596.v8c21c963d92d</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>credentials</artifactId>
+            <version>1224.vc23ca_a_9a_2cb_0</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
